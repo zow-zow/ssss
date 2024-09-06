@@ -1,3 +1,6 @@
+import eventlet
+eventlet.monkey_patch()  # 确保在导入其他模块之前调用
+
 import time
 import concurrent.futures
 from selenium import webdriver
@@ -7,8 +10,7 @@ import re
 import os
 import threading
 from queue import Queue
-import eventlet
-eventlet.monkey_patch()
+
 
 urls = [
     "https://fofa.info/result?qbase64=ImlwdHYvbGl2ZS96aF9jbi5qcyIgJiYgY291bnRyeT0iQ04iICYmIHJlZ2lvbj0iU2ljaHVhbiI%3D",  # 四川
