@@ -1,8 +1,8 @@
 name: update-lives-list
 
-on:
-  schedule:
-    - cron: '0 21 * * *'
+# on:
+#   schedule:
+#     - cron: '0 21 * * *'
   push:
     branches:
       - main
