@@ -1,8 +1,8 @@
-name: tl
+name: update-lives-list
 
 on:
-  #schedule:
-  #  - cron: '0 3,9,15,21 * * *'
+  schedule:
+    - cron: '0 21 * * *'
   push:
     branches:
       - main
@@ -14,38 +14,25 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
+    
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: 3.x
 
       - name: Install dependencies
-        run: pip install selenium requests futures eventlet pytz
+        run: pip install selenium requests futures eventlet
 
-      - name: Install FFmpeg
+      - name: Run iptv
+        run: python ${{ github.workspace }}/iptv.py
+
+        
+      - name: 提交
         run: |
-          sudo apt-get update
-          sudo apt-get install -y ffmpeg
-
-      - name: Run itv_all
-        run: python ${{ github.workspace }}/tl.py
-
-      #- name: Run cctv
-        #run: python ${{ github.workspace }}/cctv.py
-        
-      #- name: Run weishi
-        #run: python ${{ github.workspace }}/weishi.py
-        
-      #- name: Run qita
-        #run: python ${{ github.workspace }}/qita.py
-        
-      - name: 提交更改
-        run: |
-          git config --local user.email "191049659@qq.com"
-          git config --local user.name "zow-zow"
-          #git add .
-          #git commit *.txt -m "Add generated file"
-          #git commit *.m3u -m "Add generated file"
+          git config --local user.email "ssili@126.com"
+          git config --local user.name "ssili126"
+          git add .
+          git commit *.txt -m "Add generated file"
+          git commit *.m3u -m "Add generated file"
           #git pull --rebase
-          #git push -f
+          git push -f
