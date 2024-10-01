@@ -33,7 +33,10 @@ provinces = ['北京', '天津', '上海', '重庆', '河北', '山西', '内蒙
 
 # 从 URL 加载后缀
 def load_suffixes(url):
+
     response = requests.get(url)
+    #utf-8编码
+    response.encoding = 'utf-8'
     response.raise_for_status()  # 确保请求成功
     urls = []
     for line in response.text.splitlines():
@@ -44,11 +47,17 @@ def load_suffixes(url):
 # 从 URL 加载 URL 对应名称
 def load_url_names(url):
     response = requests.get(url)
+    response.encoding = 'utf-8'
     response.raise_for_status()  # 确保请求成功
     formatted_names = {}
     for line in response.text.splitlines():
-        url, name = line.strip().split(',')
-        formatted_names[url.split('/')[-1]] = name  # 仅保留路径部分作为键
+        line = line.strip()  # 去除前后的空白字符
+        # 检查行是否有效，包含逗号并且非空
+        if line and ',' in line:
+            url, name = line.split(',', 1)  # 采用split(',',1)以避免过多分割
+            formatted_names[url.split('/')[-1]] = name  # 仅保留路径部分作为键
+        else:
+            print(f"无效行：{line}")  # 打印无效行以供调试
     return formatted_names
 
 # 获取省份数据
