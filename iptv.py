@@ -26,7 +26,7 @@ headers = {
 }
 
 # 可同时处理的省份列表
-provinces = ['北京']
+provinces = ['陕西']
 
 # 从 URL 加载后缀
 def load_suffixes(url):
