@@ -31,21 +31,24 @@ provinces = ['北京', '天津', '上海', '重庆', '河北', '山西', '内蒙
             '河南', '湖北', '湖南', '广东', '广西', '海南', '四川', '贵州',
                 '云南', '西藏', '陕西', '甘肃', '青海', '宁夏', '新疆']
 
-def load_suffixes(file_path):
+# 从 URL 加载后缀
+def load_suffixes_from_url(url):
+    response = requests.get(url)
+    response.raise_for_status()  # 确保请求成功
     urls = []
-    with open(file_path, 'r', encoding='utf-8') as file:
-        for line in file:
-            url = line.strip().split(',')[0]  # 只取逗号前面的部分
-            urls.append(url)  # 将URL添加到列表中
+    for line in response.text.splitlines():
+        url = line.strip().split(',')[0]  # 只取逗号前面的部分
+        urls.append(url)
     return urls
 
-# 读取URL对应名称
-def load_url_names(file_path):
+# 从 URL 加载 URL 对应名称
+def load_url_names_from_url(url):
+    response = requests.get(url)
+    response.raise_for_status()  # 确保请求成功
     formatted_names = {}
-    with open(file_path, 'r', encoding='utf-8') as file:
-        for line in file:
-            url, name = line.strip().split(',')
-            formatted_names[url.split('/')[-1]] = name  # 仅保留路径部分作为键
+    for line in response.text.splitlines():
+        url, name = line.strip().split(',')
+        formatted_names[url.split('/')[-1]] = name  # 仅保留路径部分作为键
     return formatted_names
 
 # 获取省份数据
