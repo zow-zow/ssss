@@ -99,7 +99,7 @@ def extract_urls(json_data):
 # 测量下载速度
 def measure_download_speed(url, name, duration=10):
     try:
-        print(f"开始测量下载速度：{url}")
+       # print(f"开始测量下载速度：{url}")
         start_time = time.time()
         response = requests.get(url, stream=True, timeout=3)
 
