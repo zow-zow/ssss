@@ -115,7 +115,7 @@ def measure_download_speed(url, name, duration=10):
             speed = total_downloaded / elapsed_time / 1024 / 1024  # MB/s
         return name, url, speed
     except requests.exceptions.RequestException as e:
-        print(f"Failed to download {url}: {e}")
+        #print(f"Failed to download {url}: {e}")
         return name, url, 0.0
 
 # 为每个省份处理数据
