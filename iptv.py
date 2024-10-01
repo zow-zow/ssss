@@ -32,7 +32,7 @@ provinces = ['北京', '天津', '上海', '重庆', '河北', '山西', '内蒙
                 '云南', '西藏', '陕西', '甘肃', '青海', '宁夏', '新疆']
 
 # 从 URL 加载后缀
-def load_suffixes_from_url(url):
+def load_suffixes(url):
     response = requests.get(url)
     response.raise_for_status()  # 确保请求成功
     urls = []
@@ -42,7 +42,7 @@ def load_suffixes_from_url(url):
     return urls
 
 # 从 URL 加载 URL 对应名称
-def load_url_names_from_url(url):
+def load_url_names(url):
     response = requests.get(url)
     response.raise_for_status()  # 确保请求成功
     formatted_names = {}
