@@ -76,7 +76,7 @@ def fetch_province_data(province):
             "shortcuts": [],
             "query": f'octet-stream AND UDPXY AND province: "{province}"',
             "start": 0,
-            "size": 80,
+            "size": 10,
             "device": {
                 "device_type": "PC",
                 "os": "Windows",
@@ -185,16 +185,19 @@ def main():
     open(output_file, "w").close()
 
     # 顺序处理每个省份的数据
-    for province in provinces:
-        process_province(province, output_file)
+    # for province in provinces:
+    #     process_province(province, output_file)
 
-    # 并发处理每个省份的数据
-    #with concurrent.futures.ThreadPoolExecutor() as executor:
-    #     futures = [executor.submit(process_province, province, output_file) for province in provinces]
+    # 并发处理每个省份的数据，但每个请求间隔1秒
+    with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
+        futures = []
+        for province in provinces:
+            futures.append(executor.submit(process_province, province, output_file))
+            time.sleep(5)  # 在每个任务提交前延迟1秒
 
         
     # 等待所有任务完成
-    #concurrent.futures.wait(futures)
+    concurrent.futures.wait(futures)
 
     print(f"所有省份数据处理完成，结果写入 {output_file}")
 
