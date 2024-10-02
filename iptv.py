@@ -26,7 +26,10 @@ headers = {
 }
 
 # 可同时处理的省份列表
-provinces = ['安徽']
+provinces = ['北京', '天津', '上海', '重庆', '河北', '山西', '内蒙古', '辽宁', 
+            '吉林', '黑龙江', '江苏', '浙江', '安徽', '福建', '江西', '山东', 
+            '河南', '湖北', '湖南', '广东', '广西', '海南', '四川', '贵州',
+                '云南', '西藏', '陕西', '甘肃', '青海', '宁夏', '新疆']
 
 
 # 从 URL 加载后缀
@@ -158,7 +161,7 @@ def process_province(province, output_file):
 
     # 并发测量下载速度
     results = []
-    with concurrent.futures.ThreadPoolExecutor() as executor:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
         future_to_url = {executor.submit(measure_download_speed, url, url_names.get(url.split('/')[-1], "Unknown")): url for url in urls}
 
         for future in concurrent.futures.as_completed(future_to_url):
@@ -186,7 +189,7 @@ def main():
     #     process_province(province, output_file)
 
     # 并发处理每个省份的数据，但每个请求间隔1秒
-    with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
     # with concurrent.futures.ThreadPoolExecutor() as executor:
         
         futures = []
