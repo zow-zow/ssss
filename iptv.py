@@ -125,6 +125,7 @@ def measure_download_speed(url, name, duration=10):
             speed = 0.0  # 超过时限则速度为0
         else:
             speed = total_downloaded / elapsed_time / 1024 / 1024  # MB/s
+            # print(f"测量下载速度：{name} -- {url} -- {speed:.2f} MB/s")
         return name, url, speed
     except requests.exceptions.RequestException as e:
         #print(f"Failed to download {url}: {e}")
@@ -189,7 +190,7 @@ def main():
     #     process_province(province, output_file)
 
     # 并发处理每个省份的数据，但每个请求间隔1秒
-    with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:
     # with concurrent.futures.ThreadPoolExecutor() as executor:
         
         futures = []
