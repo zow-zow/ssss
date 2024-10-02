@@ -184,17 +184,17 @@ def main():
     # 清空文件内容（如果文件存在）
     open(output_file, "w").close()
 
-        # 顺序处理每个省份的数据
-    for province in provinces:
-        process_province(province, output_file)
+    # 顺序处理每个省份的数据
+    #for province in provinces:
+    #    process_province(province, output_file)
 
-    # # 并发处理每个省份的数据
-    # with concurrent.futures.ThreadPoolExecutor() as executor:
-    #     futures = [executor.submit(process_province, province, output_file) for province in provinces]
+    # 并发处理每个省份的数据
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+         futures = [executor.submit(process_province, province, output_file) for province in provinces]
 
         
-    #     # 等待所有任务完成
-    #     concurrent.futures.wait(futures)
+    # 等待所有任务完成
+    concurrent.futures.wait(futures)
 
     print(f"所有省份数据处理完成，结果写入 {output_file}")
 
