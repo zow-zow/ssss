@@ -18,7 +18,7 @@ def read_urls_from_local_file(file_path):
         return []
 
 # 获取网址响应内容
-urls = requests.get('https://ghp.ci/https://raw.githubusercontent.com/zow-zow/ssss/refs/heads/main/results.txt', timeout=3)  # 设置超时时间
+urls = requests.get('https://ghp.ci/https://raw.githubusercontent.com/zow-zow/ssss/refs/heads/main/results.txt', timeout=3,)  # 设置超时时间
 urls.encoding = 'utf-8'
 #去除每一行的前后空白，并过滤掉空白行
 urls = [url.strip() for url in urls.text.split('\n') if url.strip()]
@@ -52,6 +52,8 @@ def measure_download_speed(description, url, duration=10):
             speed = 0.0  # 如果总时间超过10秒，赋值速度为0
         else:
             speed = total_downloaded / elapsed_time / 1024 / 1024  # speed in MB/s
+            print(f"{description},{url}下载速度：{speed:.2f} MB/s")
+
         return f"{description},{url}", speed
     except (requests.exceptions.RequestException, ConnectionError) as e:
         print(f"Failed to download {url}: {e}")
