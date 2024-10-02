@@ -31,59 +31,57 @@ provinces = ['北京', '天津', '上海', '重庆', '河北', '山西', '内蒙
             '河南', '湖北', '湖南', '广东', '广西', '海南', '四川', '贵州',
                 '云南', '西藏', '陕西', '甘肃', '青海', '宁夏', '新疆']
 
-# 从 URL 加载后缀
-def load_suffixes(url):
-
-    response = requests.get(url)
-    #utf-8编码
-    response.encoding = 'utf-8'
-    response.raise_for_status()  # 确保请求成功
-    urls = []
-    for line in response.text.splitlines():
-        url = line.strip().split(',')[0]  # 只取逗号前面的部分
-        urls.append(url)
-    return urls
 
 # 从 URL 加载 URL 对应名称
 def load_url_names(url):
-    response = requests.get(url)
-    response.encoding = 'utf-8'
-    response.raise_for_status()  # 确保请求成功
-    formatted_names = {}
-    for line in response.text.splitlines():
-        line = line.strip()  # 去除前后的空白字符
-        # 检查行是否有效，包含逗号并且非空
-        if line and ',' in line:
-            url, name = line.split(',', 1)  # 采用split(',',1)以避免过多分割
-            formatted_names[url.split('/')[-1]] = name  # 仅保留路径部分作为键
-        else:
-            print(f"无效行：{line}")  # 打印无效行以供调试
-    return formatted_names
+    try:
+        response = requests.get(url)
+        response.encoding = 'utf-8'
+        response.raise_for_status()  # 确保请求成功
+        formatted_names = {}
+        for line in response.text.splitlines():
+            line = line.strip()  # 去除前后的空白字符
+            # 检查行是否有效，包含逗号并且非空
+            if line and ',' in line:
+                url, name = line.split(',', 1)  # 采用split(',',1)以避免过多分割
+                formatted_names[url.split('/')[-1]] = name  # 仅保留路径部分作为键
+            else:
+                print(f"无效行：{line}")  # 打印无效行以供调试
+        return formatted_names
+    except requests.exceptions.RequestException as e:
+        print(f"Failed to load URL names from {url}: {e}")
+        return {}
 
 # 获取省份数据
 def fetch_province_data(province):
-    data = {
-        "latest": True,
-        "ignore_cache": False,
-        "shortcuts": [],
-        "query": f'octet-stream AND UDPXY AND province: "{province}"',
-        "start": 0,
-        "size": 80,
-        "device": {
-            "device_type": "PC",
-            "os": "Windows",
-            "os_version": "10.0",
-            "language": "zh_CN",
-            "network": "3g",
-            "browser_info": "Chrome（版本: 129.0.0.0&nbsp;&nbsp;内核: Blink）",
-            "fingerprint": "8bafb7e3",
-            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0",
-            "date": "2024/10/1 13:56:9",
-            "UUID": "1e73b161-af08-599f-ba85-751613b5bb7e"
+    try:
+        data = {
+            "latest": True,
+            "ignore_cache": False,
+            "shortcuts": [],
+            "query": f'octet-stream AND UDPXY AND province: "{province}"',
+            "start": 0,
+            "size": 80,
+            "device": {
+                "device_type": "PC",
+                "os": "Windows",
+                "os_version": "10.0",
+                "language": "zh_CN",
+                "network": "3g",
+                "browser_info": "Chrome（版本: 129.0.0.0&nbsp;&nbsp;内核: Blink）",
+                "fingerprint": "8bafb7e3",
+                "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0",
+                "date": "2024/10/1 13:56:9",
+                "UUID": "1e73b161-af08-599f-ba85-751613b5bb7e"
+            }
         }
-    }
-    response = requests.post(url, json=data, headers=headers)
-    return response.json()
+        response = requests.post(url, json=data, headers=headers)
+        response.raise_for_status()  # 确保请求成功
+        return response.json()
+    except requests.exceptions.RequestException as e:
+        print(f"Failed to fetch data for {province}: {e}")
+        return None
+
 
 # 提取host和port
 def extract_urls(json_data):
