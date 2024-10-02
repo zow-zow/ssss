@@ -32,6 +32,21 @@ provinces = ['北京', '天津', '上海', '重庆', '河北', '山西', '内蒙
                 '云南', '西藏', '陕西', '甘肃', '青海', '宁夏', '新疆']
 
 
+# 从 URL 加载后缀
+def load_suffixes(url):
+    try:
+        response = requests.get(url)
+        response.encoding = 'utf-8'
+        response.raise_for_status()  # 确保请求成功
+        urls = []
+        for line in response.text.splitlines():
+            url = line.strip().split(',')[0]  # 只取逗号前面的部分
+            urls.append(url)
+        return urls
+    except requests.exceptions.RequestException as e:
+        print(f"Failed to load suffixes from {url}: {e}")
+        return []
+
 # 从 URL 加载 URL 对应名称
 def load_url_names(url):
     try:
@@ -81,7 +96,6 @@ def fetch_province_data(province):
     except requests.exceptions.RequestException as e:
         print(f"Failed to fetch data for {province}: {e}")
         return None
-
 
 # 提取host和port
 def extract_urls(json_data):
