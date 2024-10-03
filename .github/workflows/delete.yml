@@ -1,0 +1,40 @@
+name: oldlinkstest
+
+on:
+  #schedule:
+    #- cron: '30 19,22,1,4,7,10,13,16 * * *' # 每天的第3小时30分触发一次
+    #- cron: '00 3 * * *'
+  workflow_dispatch:
+  # push:
+  #   branches:
+  #     - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+    
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Install dependencies
+        run: pip install selenium requests futures eventlet
+
+      - name: Run iptv
+        run: python ${{ github.workspace }}/delete.py
+
+        
+      - name: 提交
+        run: |
+          git config --local user.email "ssili@126.com"
+          git config --local user.name "ssili126"
+          git add .
+          git commit *.txt -m "Add generated file"
+          #git commit *.m3u -m "Add generated file"
+          #git pull --rebase
+          git push -f
