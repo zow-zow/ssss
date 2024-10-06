@@ -31,7 +31,7 @@ for url in urls:
         real_url = match.group(2)
         test_urls.append((description, real_url))
 
-print(test_urls)
+# print(test_urls)
 
 # 去重处理
 unique_test_urls = list(set(test_urls))
