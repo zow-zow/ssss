@@ -163,7 +163,7 @@ def process_province(province, output_file):
 
     # 并发测量下载速度
     results = []
-    with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
         future_to_url = {executor.submit(measure_download_speed, url, url_names.get(url.split('/')[-1], "Unknown")): url for url in urls}
 
         for future in concurrent.futures.as_completed(future_to_url):
