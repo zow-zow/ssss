@@ -77,7 +77,7 @@ def fetch_province_data(province):
             "shortcuts": [],
             "query": f'octet-stream AND UDPXY AND province: "{province}"',
             "start": 0,
-            "size": 50,
+            "size": 80,
             "device": {
                 "device_type": "PC",
                 "os": "Windows",
