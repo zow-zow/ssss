@@ -1,9 +1,9 @@
 name: delete
 
 on:
-  schedule:
+ # schedule:
     #- cron: '30 19,22,1,4,7,10,13,16 * * *' # 每天的第3小时30分触发一次
-    - cron: '00 11 * * *'
+    #- cron: '00 11 * * *'
   workflow_dispatch:
   # push:
   #   branches:
