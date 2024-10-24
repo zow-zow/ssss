@@ -1,0 +1,91 @@
+name: delete
+
+on:
+  schedule:
+    #- cron: '30 19,22,1,4,7,10,13,16 * * *' # 每天的第3小时30分触发一次
+    - cron: '00 00 * * *'
+  workflow_dispatch:
+  # push:
+  #   branches:
+  #     - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+    
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Install dependencies
+        run: pip install selenium requests futures eventlet
+
+      - name: Run iptv
+        run: python ${{ github.workspace }}/青海联通.py
+      - name: Run iptv
+        run: python ${{ github.workspace }}/陕西电信.py
+      - name: Run iptv
+        run: python ${{ github.workspace }}/辽宁联通.py
+      - name: Run iptv
+        run: python ${{ github.workspace }}/福建电信.py        
+      - name: Run iptv
+        run: python ${{ github.workspace }}/甘肃电信py
+      - name: Run iptv
+        run: python ${{ github.workspace }}/北京联通.py
+      - name: Run iptv
+        run: python ${{ github.workspace }}/山东.py
+      - name: Run iptv
+        run: python ${{ github.workspace }}/湖南电信.py        
+      - name: Run iptv
+        run: python ${{ github.workspace }}/湖北电信.py
+      - name: Run iptv
+        run: python ${{ github.workspace }}/浙江电信.py
+      - name: Run iptv
+        run: python ${{ github.workspace }}/河南联通.py
+      - name: Run iptv
+        run: python ${{ github.workspace }}/江西电信.py        
+      - name: Run iptv
+        run: python ${{ github.workspace }}/江苏电信.py
+      - name: Run iptv
+        run: python ${{ github.workspace }}/广西电信.py
+      - name: Run iptv
+        run: python ${{ github.workspace }}/山西电信.py
+      - name: Run iptv
+        run: python ${{ github.workspace }}/安徽电信.py
+      - name: Run iptv
+        run: python ${{ github.workspace }}/天津联通.py
+      - name: Run iptv
+        run: python ${{ github.workspace }}/四川电信.py
+      - name: Run iptv
+        run: python ${{ github.workspace }}/吉林电信.py
+      - name: Run iptv
+        run: python ${{ github.workspace }}/内蒙.py        
+      - name: Run iptv
+        run: python ${{ github.workspace }}/上海电信.py
+      - name: Run iptv
+        run: python ${{ github.workspace }}/广东电信.py
+      - name: Run iptv
+        run: python ${{ github.workspace }}/河北.py
+      - name: Run iptv
+        run: python ${{ github.workspace }}/云南电信.py
+      - name: Run iptv
+        run: python ${{ github.workspace }}/重庆.py
+        
+
+
+
+        
+      - name: 提交
+        run: |
+          git config --local user.email "ssili@126.com"
+          git config --local user.name "ssili126"
+          git add .
+          git commit *.txt -m "Add generated file"
+          #git commit *.m3u -m "Add generated file"
+          #git pull --rebase
+          git push -f
