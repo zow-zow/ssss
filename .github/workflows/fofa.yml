@@ -34,7 +34,7 @@ jobs:
       - name: Run 福建
         run: python ${{ github.workspace }}/zb/福建电信.py        
       - name: Run 甘肃
-        run: python ${{ github.workspace }}/zb/甘肃电信py
+        run: python ${{ github.workspace }}/zb/甘肃电信.py
       - name: Run 北京
         run: python ${{ github.workspace }}/zb/北京联通.py
       - name: Run 山东
