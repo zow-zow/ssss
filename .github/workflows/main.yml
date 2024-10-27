@@ -1,4 +1,4 @@
-name: update-lives-list
+name: 360
 
 on:
   schedule:
@@ -26,7 +26,7 @@ jobs:
         run: pip install selenium requests futures eventlet
 
       - name: Run iptv
-        run: python ${{ github.workspace }}/iptv.py
+        run: python ${{ github.workspace }}/360.py
 
         
       - name: 提交
