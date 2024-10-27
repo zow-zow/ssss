@@ -157,7 +157,7 @@ def process_province(province, output_file):
                 file.write(f"{name},{url} -- {speed:.2f} MB/s\n")
 
 def main():
-    output_file = "/www/wwwroot/zhibophp/源/zoom_results.txt"
+    output_file = "zoomresults.txt"
     
     # 清空文件内容（如果文件存在）
     open(output_file, "w").close()
