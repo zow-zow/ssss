@@ -1,9 +1,9 @@
 name: fofa
 
 on:
-  #schedule:
+  schedule:
     #- cron: '30 19,22,1,4,7,10,13,16 * * *' # 每天的第3小时30分触发一次
-    #- cron: '00 00 * * *'
+    - cron: '00 00 * * *'
   workflow_dispatch:
   # push:
   #   branches:
@@ -25,65 +25,16 @@ jobs:
       - name: Install dependencies
         run: pip install selenium requests futures eventlet
 
-      - name: Run 青海
-        run: python ${{ github.workspace }}/zb/青海联通.py
-      - name: Run 陕西
-        run: python ${{ github.workspace }}/zb/陕西电信.py
-      - name: Run 辽宁
-        run: python ${{ github.workspace }}/zb/辽宁联通.py
-      - name: Run 福建
-        run: python ${{ github.workspace }}/zb/福建电信.py        
-      - name: Run 甘肃
-        run: python ${{ github.workspace }}/zb/甘肃电信.py
-      - name: Run 北京
-        run: python ${{ github.workspace }}/zb/北京联通.py
-      - name: Run 山东
-        run: python ${{ github.workspace }}/zb/山东.py
-      - name: Run 湖南
-        run: python ${{ github.workspace }}/zb/湖南电信.py        
-      - name: Run 湖北
-        run: python ${{ github.workspace }}/zb/湖北电信.py
-      - name: Run 浙江
-        run: python ${{ github.workspace }}/zb/浙江电信.py
-      - name: Run 河南
-        run: python ${{ github.workspace }}/zb/河南联通.py
-      - name: Run 江西
-        run: python ${{ github.workspace }}/zb/江西电信.py        
-      - name: Run 江苏
-        run: python ${{ github.workspace }}/zb/江苏电信.py
-      - name: Run 广西
-        run: python ${{ github.workspace }}/zb/广西电信.py
-      - name: Run 山西
-        run: python ${{ github.workspace }}/zb/山西电信.py
-      - name: Run 安徽
-        run: python ${{ github.workspace }}/zb/安徽电信.py
-      - name: Run 天津
-        run: python ${{ github.workspace }}/zb/天津联通.py
-      - name: Run 四川
-        run: python ${{ github.workspace }}/zb/四川电信.py
-      - name: Run 吉林
-        run: python ${{ github.workspace }}/zb/吉林电信.py
-      - name: Run 内蒙
-        run: python ${{ github.workspace }}/zb/内蒙.py        
-      - name: Run 上海
-        run: python ${{ github.workspace }}/zb/上海电信.py
-      - name: Run 广东
-        run: python ${{ github.workspace }}/zb/广东电信.py
-      - name: Run 河北
-        run: python ${{ github.workspace }}/zb/河北.py
-      - name: Run 云南
-        run: python ${{ github.workspace }}/zb/云南电信.py
-      - name: Run 重庆
-        run: python ${{ github.workspace }}/zb/重庆.py
-        
+      - name: Run zoom
+        run: python ${{ github.workspace }}/zoom.py
 
 
 
         
       - name: 提交
         run: |
-          git config --local user.email "ssili@126.com"
-          git config --local user.name "ssili126"
+          git config --local user.email "191049659@qq.com"
+          git config --local user.name "zow_zow"
           git add .
           git commit *.txt -m "Add generated file"
           #git commit *.m3u -m "Add generated file"
