@@ -4,11 +4,11 @@ import concurrent.futures
 
 
 # 可同时处理的省份列表
-#provinces = ['天津','上海',]
-provinces = ['北京', '天津', '上海', '重庆', '河北', '山西', '内蒙古', '辽宁', 
-            '吉林', '黑龙江', '江苏', '浙江', '安徽', '福建', '江西', '山东', 
-            '河南', '湖北', '湖南', '广东', '广西', '海南', '四川', '贵州',
-                '云南', '西藏', '陕西', '甘肃', '青海', '宁夏', '新疆']
+provinces = ['上海']
+# provinces = ['北京', '天津', '上海', '重庆', '河北', '山西', '内蒙古', '辽宁', 
+#             '吉林', '黑龙江', '江苏', '浙江', '安徽', '福建', '江西', '山东', 
+#             '河南', '湖北', '湖南', '广东', '广西', '海南', '四川', '贵州',
+#                 '云南', '西藏', '陕西', '甘肃', '青海', '宁夏', '新疆']
 
 # 从 URL 加载后缀
 def load_suffixes(url):
@@ -157,7 +157,7 @@ def process_province(province, output_file):
                 file.write(f"{name},{url} -- {speed:.2f} MB/s\n")
 
 def main():
-    output_file = "zoomresults.txt"
+    output_file = "/www/wwwroot/zhibophp/源/zoom_results.txt"
     
     # 清空文件内容（如果文件存在）
     open(output_file, "w").close()
