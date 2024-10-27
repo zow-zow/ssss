@@ -75,7 +75,7 @@ def fetch_province_data(province):
             "latest": True,
             "ignore_cache": False,
             "shortcuts": [],
-            "query": f'octet-stream AND UDPXY AND province: "{province}"',
+            "query": f'\"application/octet-stream\" AND UDPXY AND province: "{province}"',
             "start": 0,
             "size": 80,
             "device": {
@@ -108,6 +108,7 @@ def extract_urls(json_data):
             port = item.get('port')  # 直接获取 port
             if host and port:  # 确保 host 和 port 不为空
                 found_urls.append(f"{host}:{port}")
+    print(found_urls)            
     return found_urls
 # 测量下载速度
 def measure_download_speed(url, name, duration=10):
@@ -126,7 +127,7 @@ def measure_download_speed(url, name, duration=10):
             speed = 0.0  # 超过时限则速度为0
         else:
             speed = total_downloaded / elapsed_time / 1024 / 1024  # MB/s
-            # print(f"测量下载速度：{name} -- {url} -- {speed:.2f} MB/s")
+            print(f"测量下载速度：{name} -- {url} -- {speed:.2f} MB/s")
         return name, url, speed
     except requests.exceptions.RequestException as e:
         #print(f"Failed to download {url}: {e}")
