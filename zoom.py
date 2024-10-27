@@ -107,7 +107,7 @@ def extract_urls(json_data):
             port = match['portinfo']['port']
             url = f"http://{ip}:{port}"
             found_urls.append(url)
-    #print(found_urls)
+    print(found_urls)
     return found_urls
 # 测量下载速度
 def measure_download_speed(url, name, duration=10):
