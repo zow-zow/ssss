@@ -2,28 +2,6 @@ import requests
 import time
 import concurrent.futures
 
-# # 基础的POST请求和Headers
-# url = 'https://quake.360.net/api/search/query_string/quake_service'
-# headers = {
-#     'Host': 'quake.360.net',
-#     'Connection': 'keep-alive',
-#     'Content-Length': '514',
-#     'sec-ch-ua-platform': '"Windows"',
-#     'Authorization': '233',
-#     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0',
-#     'Accept': 'application/json, text/plain, */*',
-#     'sec-ch-ua': '"Microsoft Edge";v="129", "Not=A?Brand";v="8", "Chromium";v="129"',
-#     'Content-Type': 'application/json',
-#     'sec-ch-ua-mobile': '?0',
-#     'Origin': 'https://quake.360.net',
-#     'Sec-Fetch-Site': 'same-origin',
-#     'Sec-Fetch-Mode': 'cors',
-#     'Sec-Fetch-Dest': 'empty',
-#     'Referer': 'https://quake.360.net/quake/',
-#     'Accept-Encoding': 'gzip, deflate, br, zstd',
-#     'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
-#     'Cookie': '__guid=261090063.613249672348867000.1716045888585.0752; Qs_lvt_347988=1716045889%2C1727758734; Qs_pv_347988=232592375406089440%2C2694674839023988700; Q=u%3DMBJ_1990%26n%3DMBJ_1990%26le%3DZGxkZQD5AwH5WGDjpKRhL29g%26m%3DZGZ2WGWOWGWOWGWOWGWOWGWOZmL0%26qid%3D30236351%26im%3D1_t0179f90761614136d3%26src%3Dpcw_pinpaizhongxin%26t%3D1; __NS_Q=u%3DMBJ_1990%26n%3DMBJ_1990%26le%3DZGxkZQD5AwH5WGDjpKRhL29g%26m%3DZGZ2WGWOWGWOWGWOWGWOWGWOZmL0%26qid%3D30236351%26im%3D1_t0179f90761614136d3%26src%3Dpcw_pinpaizhongxin%26t%3D1; cert_common=e76bf9d9-bc20-4a98-9f03-cfa370f72aa6; Qs_lvt_357693=1722167193%2C1722308122%2C1722398281%2C1722586464%2C1727758821; T=s%3D29492d3a3c509a1c3dcc142fd0e674b1%26t%3D1727758879%26lm%3D2-1%26lf%3D2%26sk%3D35b1f48167d1fa49a753a56e5926741d%26mt%3D1727758879%26rc%3D%26v%3D2.0%26a%3D1; __NS_T=s%3D29492d3a3c509a1c3dcc142fd0e674b1%26t%3D1727758879%26lm%3D2-1%26lf%3D2%26sk%3D35b1f48167d1fa49a753a56e5926741d%26mt%3D1727758879%26rc%3D%26v%3D2.0%26a%3D1; Qs_pv_357693=85128068538245360%2C1354647596654044700%2C4278164041916076000%2C602192517421148700%2C2674543313704729000'
-# }
 
 # 可同时处理的省份列表
 #provinces = ['天津','上海',]
@@ -31,8 +9,6 @@ provinces = ['北京', '天津', '上海', '重庆', '河北', '山西', '内蒙
             '吉林', '黑龙江', '江苏', '浙江', '安徽', '福建', '江西', '山东', 
             '河南', '湖北', '湖南', '广东', '广西', '海南', '四川', '贵州',
                 '云南', '西藏', '陕西', '甘肃', '青海', '宁夏', '新疆']
-
-    
 
 # 从 URL 加载后缀
 def load_suffixes(url):
@@ -126,7 +102,7 @@ def measure_download_speed(url, name, duration=10):
             speed = 0.0  # 超过时限则速度为0
         else:
             speed = total_downloaded / elapsed_time / 1024 / 1024  # MB/s
-            print(f"发现有效源：{name} -- {url} -- {speed:.2f} MB/s")
+            print(f"测试源速度：{name} -- {url} -- {speed:.2f} MB/s")
         return name, url, speed
     except requests.exceptions.RequestException as e:
         # print(f"Failed to download {url}: {e}")
