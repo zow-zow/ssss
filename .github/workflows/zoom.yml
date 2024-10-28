@@ -1,4 +1,4 @@
-name: zoom
+name: fofa
 
 on:
   schedule:
@@ -26,7 +26,7 @@ jobs:
         run: pip install selenium requests futures eventlet
 
       - name: Run zoom
-        run: python ${{ github.workspace }}/zoom.py
+        run: python ${{ github.workspace }}/fofa.py
 
 
 
