@@ -25,7 +25,7 @@ jobs:
       - name: Install dependencies
         run: pip install selenium requests futures eventlet
 
-      - name: Run zoom
+      - name: Run fofa
         run: python ${{ github.workspace }}/fofa.py
 
 
