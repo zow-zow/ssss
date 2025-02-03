@@ -43,11 +43,11 @@
 
 #海南,#genre#
 
+#四川,#genre#
+
 #贵州,#genre#
 
 #云南,#genre#
-
-#四川,#genre#
 
 #西藏,#genre#
 
