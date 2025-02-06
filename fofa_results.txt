@@ -55,8 +55,8 @@
 
 #甘肃,#genre#
 
-#青海,#genre#
-
 #宁夏,#genre#
+
+#青海,#genre#
 
 #新疆,#genre#
