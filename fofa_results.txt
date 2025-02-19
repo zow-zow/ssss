@@ -37,17 +37,17 @@
 
 #湖南,#genre#
 
+#广东,#genre#
+
 #广西,#genre#
 
 #海南,#genre#
 
-#广东,#genre#
-
 #贵州,#genre#
 
-#四川,#genre#
-
 #云南,#genre#
+
+#四川,#genre#
 
 #西藏,#genre#
 
@@ -55,8 +55,8 @@
 
 #甘肃,#genre#
 
-#宁夏,#genre#
-
 #青海,#genre#
+
+#宁夏,#genre#
 
 #新疆,#genre#
