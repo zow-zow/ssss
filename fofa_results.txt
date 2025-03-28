@@ -39,13 +39,13 @@
 
 #广东,#genre#
 
-#广西,#genre#
-
 #海南,#genre#
 
-#四川,#genre#
+#广西,#genre#
 
 #贵州,#genre#
+
+#四川,#genre#
 
 #云南,#genre#
 
