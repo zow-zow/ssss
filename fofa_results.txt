@@ -23,9 +23,9 @@
 
 #浙江,#genre#
 
-#安徽,#genre#
-
 #福建,#genre#
+
+#安徽,#genre#
 
 #江西,#genre#
 
@@ -39,13 +39,13 @@
 
 #广东,#genre#
 
-#海南,#genre#
-
 #广西,#genre#
 
-#贵州,#genre#
+#海南,#genre#
 
 #四川,#genre#
+
+#贵州,#genre#
 
 #云南,#genre#
 
