@@ -23,9 +23,9 @@
 
 #浙江,#genre#
 
-#福建,#genre#
-
 #安徽,#genre#
+
+#福建,#genre#
 
 #江西,#genre#
 
@@ -55,8 +55,8 @@
 
 #甘肃,#genre#
 
-#青海,#genre#
-
 #宁夏,#genre#
+
+#青海,#genre#
 
 #新疆,#genre#
