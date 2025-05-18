@@ -18,7 +18,7 @@ def read_urls_from_local_file(file_path):
         return []
 
 # 获取网址响应内容
-urls = requests.get('http://8.138.87.43:1818/源/汇总源.txt', timeout=3,headers={'User-Agent': '3ZTV3.1'})  # 设置超时时间
+urls = requests.get('http://php.5261314.xyz/源/汇总源.txt', timeout=3,headers={'User-Agent': '3ZTV3.1'})  # 设置超时时间
 urls.encoding = 'utf-8'
 #去除每一行的前后空白，并过滤掉空白行
 urls = [url.strip() for url in urls.text.split('\n') if url.strip()]
